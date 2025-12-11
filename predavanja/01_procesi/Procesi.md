@@ -34,9 +34,9 @@ Pored koda i skupa podataka, proces poseduje i upravljacki blok
 > [!NOTE] Dispecer (Dispatcher)
 > **Dispecer** je relativno mali program koji je deo OS-a i ciji je zadatak da prebacuje procesor sa programa na program. Dispecer moze biti **neprekidni (non - preemptive)** i **prekidni (preemptive)**
 
-![dispecer](slike/dispecer.png)
+![dispecer](dispecer.png)
 ### Jednostavan primer stanja procesa
-![prelazak-stanja](slike/prelazak_stanja.png)
+![prelazak-stanja](prelazak_stanja.png)
 ### Model procesa sa dva stanja
 
 Proces A: |                |-----------------------------------------|              |-------------------------|
@@ -75,7 +75,7 @@ Pretpostavka:  Koristi se *Round-robin* tehnika kruznog dodeljivanja
 
 **Problem**: Ako postoji samo jedan red cekanja za sve procese, dispecer bi svaki put morao da skenira taj red kako bi utvrdio koji proces nije blokiran i koji je u redu bio najduze.
 **Resenje**: Stanje ne izvrsava se podeliti na dva stanja -> spreman i blokiran. 
-![model-5-stanja](slike/model-5-stanja.png)
+![model-5-stanja](model-5-stanja.png)
 Znacenje pojedinacnih stanja:
 1. **Izvrsava se** - Proces koji se trenutno izvrsava
 2. **Spreman** - Proces koji je spreman za izvrsavanje kada dobije procesor na koriscenje
@@ -85,11 +85,11 @@ Znacenje pojedinacnih stanja:
 
 Ukoliko imamo samo jedan red za cekanje za procese koji su u stanju blokiran, u trenutku kada se pojavi bilo koji dogadjaj (recimo U/I) dispecer mora da skenira ceo red kako bi utvrdio koji od blokiranih procesa ceka bas taj dogadjaj.
 Resenje ovog problema -> uvesti vise redova blokiranih procesa za svaki tip dogadjaja posebno.
-![vise-redova-za-cekanje](slike/vise-redova.png)
+![vise-redova-za-cekanje](vise-redova.png)
 ### Suspendovani procesi
 **Problem**: Ukoliko vise procesa mora da ceka spori U/I, procesor u sistemu bez virtuelne memorije i dalje moze veci deo vremena da provede besposlen.
 **Resenje**: Ako nijedan proces u RAM-u nije u stanju Spreman, OS prebacuje jedan proces na disk u red Suspendovanih procesa. Tada OS moze da preuzme u RAM drugi proces iz reda suspendovanih ili prima zahtev za novim procesom.
-![suspendovani-procesi](slike/suspendovan-proces.png)
+![suspendovani-procesi](suspendovan-proces.png)
 ### Model sa dva suspendovana stanja
 Stanja procesa:
 1. **Spreman** - Proces je u RAM - u i raspoloziv za izvrsavanje
@@ -132,6 +132,7 @@ Stanja procesa:
 | Prekid (Interrupt) | Eksterni u odnosu na tekucu instrukciju | Reakcija na asinhroni spoljni dogadjaj |
 | Zamka (Trap)       | Pridruzen izvrsenju tekuce instrukcije  | Rukovanje greskom ili izuzetkom        |
 | Poziv supervizora  | Eksplicitni zahtev                      | Poziv funkcije operativnog sistema     |
+|                    |                                         |                                        |
 ### Komutiranje moda vs. promena stanja procesa
 **Komutiranje moda**
 1. PC registar se setuje na pocetnu adresu rukovaoca prekidom (interrupt handler)
