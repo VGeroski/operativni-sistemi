@@ -1,0 +1,18 @@
+/* Program ispituje da li je fajl vezan za standardni ulaz pretraziv. */
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+    /* pazimo da pri pozivu uradimo redirekciju, inace je uvek vezan za terminal. 
+       npr: ./a.out < open.c */
+    if (lseek(STDIN_FILENO, 0, SEEK_CUR) < 0)
+        perror("lseek()");
+    else
+        fprintf(stdout, "Moze da se pretrazuje.\n");
+
+    exit(EXIT_SUCCESS);
+}
